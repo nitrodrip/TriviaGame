@@ -1,57 +1,77 @@
 (function() {
-  const myQuestions = [
+  var myQuestions = [
     {
-      question: "Who is the strongest?",
+      question: "What is the best-selling Nintendo exclusive game of all time?",
       answers: {
-        a: "Superman",
-        b: "The Terminator",
-        c: "Waluigi, obviously"
+        a: "Duck Hunt",
+        b: "Super Mario Bros.",
+        c: "Mario Kart Wii",
+		d: "Wii Sports"
       },
-      correctAnswer: "c"
+      correctAnswer: "d" 
+		//Wii Sports (2006) - The game sold 82.96 million copies, more than double that of the original Super Mario Bros.
     },
     {
-      question: "What is the best site ever created?",
+      question: "Which of the following games did Mario creator Shigeru Miyamoto NOT design?",
       answers: {
-        a: "SitePoint",
-        b: "Simple Steps Code",
-        c: "Trick question; they're both the best"
+        a: "Donkey Kong",
+        b: "Kid Icarus",
+        c: "Excitebike",
+		d: "The Legend of Zelda"
+		  
       },
-      correctAnswer: "c"
+      correctAnswer: "b"
+		//Kid Icarus - Toru Osawa and Yoshio Sakamoto are credited with designing Kid Icarus. Sakamoto is also co-creator of Metroid.
     },
     {
-      question: "Where is Waldo really?",
+      question: "What is the first game with Princess Zelda as a playable character?",
       answers: {
-        a: "Antarctica",
-        b: "Exploring the Pacific Ocean",
-        c: "Sitting in a tree",
-        d: "Minding his own business, so stop asking"
+        a: "Zelda: Wand of Gamelon",
+        b: "The Legend of Zelda: Ocarina of Time",
+        c: "Super Smash Bros. Melee",
+        d: "Super Smash Bros. Brawl"
       },
-      correctAnswer: "d"
-    }
+      correctAnswer: "a"
+		//Zelda: Wand of Gamelon (1993) This truly atrocious game was released for the ill-fated Philips CD-i system. The low budget, crudely animated game was created with almost no involvement from Nintendo.
+    },
+	  {
+		question: "What is the best-selling Nintendo handheld of all time?",
+      answers: {
+        a: "Nintendo Game Boy",
+        b: "Nintendo Game Boy Advance",
+        c: "Nintendo DS",
+        d: "Nintendo 3DS"
+      },
+      correctAnswer: "c"
+		//The Nintendo DS is the second-best selling video game system of all time, second only to the Sony PlayStation 2.  
+	  }
   ];
 
   function buildQuiz() {
-    // we'll need a place to store the HTML output
-    const output = [];
+    
+	  //store the HTML output
+    	var output = [];
 
-    // for each question...
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-      // we'll want to store the list of answer choices
-      const answers = [];
+    	//for each question...
+    	myQuestions.forEach((currentQuestion, questionNumber) => {
+      
+		//store the list of answer choices
+		var answers = [];
 
-      // and for each available answer...
-      for (letter in currentQuestion.answers) {
-        // ...add an HTML radio button
+      	//and for each available answer...
+      	for (letter in currentQuestion.answers) {
+        
+		// ...add an HTML radio button
         answers.push(
           `<label>
-             <input type="radio" name="question${questionNumber}" value="${letter}">
-              ${letter} :
-              ${currentQuestion.answers[letter]}
+           <input type="radio" name="question${questionNumber}" value="${letter}">
+           ${letter} :
+           ${currentQuestion.answers[letter]}
            </label>`
         );
       }
 
-      // add this question and its answers to the output
+      //add question and its answers to the output
       output.push(
         `<div class="slide">
            <div class="question"> ${currentQuestion.question} </div>
@@ -60,34 +80,34 @@
       );
     });
 
-    // finally combine our output list into one string of HTML and put it on the page
+    // last combine our output list into one string of HTML and put it on the page
     quizContainer.innerHTML = output.join("");
   }
 
   function showResults() {
+	  
     // gather answer containers from our quiz
-    const answerContainers = quizContainer.querySelectorAll(".answers");
+    var answerContainers = quizContainer.querySelectorAll(".answers");
 
-    // keep track of user's answers
+    //track answers
     let numCorrect = 0;
 
     // for each question...
     myQuestions.forEach((currentQuestion, questionNumber) => {
-      // find selected answer
-      const answerContainer = answerContainers[questionNumber];
-      const selector = `input[name=question${questionNumber}]:checked`;
-      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+    
+	// find selected answer
+    var answerContainer = answerContainers[questionNumber];
+    var selector = `input[name=question${questionNumber}]:checked`;
+    var userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-      // if answer is correct
-      if (userAnswer === currentQuestion.correctAnswer) {
-        // add to the number of correct answers
-        numCorrect++;
-
-        // color the answers green
-        answerContainers[questionNumber].style.color = "lightgreen";
+    // if answer is correct
+     if (userAnswer === currentQuestion.correctAnswer) {
+        
+		 // add to the number of correct answers color green
+        numCorrect++; answerContainers[questionNumber].style.color = "lightgreen";
+        
       } else {
-        // if answer is wrong or blank
-        // color the answers red
+        // if answer is wrong or blank color answers red
         answerContainers[questionNumber].style.color = "red";
       }
     });
@@ -124,16 +144,16 @@
     showSlide(currentSlide - 1);
   }
 
-  const quizContainer = document.getElementById("quiz");
-  const resultsContainer = document.getElementById("results");
-  const submitButton = document.getElementById("submit");
+  var quizContainer = document.getElementById("quiz");
+  var resultsContainer = document.getElementById("results");
+  var submitButton = document.getElementById("submit");
 
   // display quiz right away
   buildQuiz();
 
-  const previousButton = document.getElementById("previous");
-  const nextButton = document.getElementById("next");
-  const slides = document.querySelectorAll(".slide");
+  var previousButton = document.getElementById("previous");
+  var nextButton = document.getElementById("next");
+  var slides = document.querySelectorAll(".slide");
   let currentSlide = 0;
 
   showSlide(0);
@@ -143,171 +163,3 @@
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
 })();
-
-//const quizContainer = document.getElementById('quiz');
-//
-//
-//const resultsContainer = document.getElementById('results');
-//
-////Submit button
-//const submitButton = document.getElementById('submit');
-//
-////Questions Array
-//const myQuestions = [
-//  {
-//    question: "Who is the strongest?",
-//    answers: {
-//      a: "Superman",
-//      b: "The Terminator",
-//      c: "Waluigi, obviously"
-//    },
-//    correctAnswer: "c"
-//  },
-//  {
-//    question: "What is the best site ever created?",
-//    answers: {
-//      a: "SitePoint",
-//      b: "Simple Steps Code",
-//      c: "Trick question; they're both the best"
-//    },
-//    correctAnswer: "c"
-//  },
-//  {
-//    question: "Where is Waldo really?",
-//    answers: {
-//      a: "Antarctica",
-//      b: "Exploring the Pacific Ocean",
-//      c: "Sitting in a tree",
-//      d: "Minding his own business, so stop asking"
-//    },
-//    correctAnswer: "d"
-//  }
-//];
-//
-//function buildQuiz(){
-//	
-//	/*store HTML output*/
-//  	const output = [];
-//
-//	/*for each question...*/
-//  	myQuestions.forEach(
-//    (currentQuestion, questionNumber) => {
-//
-//	/*store the list of answer choices*/
-//    const answers = [];
-//
-//	/*and for each available answer...*/
-//    for(letter in currentQuestion.answers){
-//
-//	/*add an HTML radio button*/
-//    answers.push(`<label>
-//            <input type="radio" name="question${questionNumber}" value="${letter}">
-//            ${letter} :
-//            ${currentQuestion.answers[letter]}
-//          </label>`
-//        );
-//      }
-//
-//	/*add this question and its answers to the output*/
-//    output.push(
-//       `<div class="question"> ${currentQuestion.question} </div>
-//       <div class="answers"> ${answers.join('')} </div>`
-//      );
-//    }
-//  );
-//
-//	/*finally combine our output list into one string of HTML and put it on the page*/
-//  	quizContainer.innerHTML = output.join('');
-//}
-//
-//function showResults(){}
-//
-//	/*display quiz right away*/
-//	buildQuiz();
-//
-//	/*on submit, show results*/
-//	submitButton.addEventListener('click', showResults);
-//
-//	/* here goes the code we want to run for each question*/
-//	myQuestions.forEach( (currentQuestion, questionNumber) => {
-//  
-//});
-//
-//	/*and for each available answer...*/
-//	for(letter in currentQuestion.answers){
-//
-///*.add an html radio button*/
-//  answers.push(
-//    `<label>
-//      <input type="radio" name="question${questionNumber}" value="${letter}">
-//      ${letter} :
-//      ${currentQuestion.answers[letter]}
-//    </label>`
-//  );
-//}
-//
-//	/*add this question and its answers to the output*/
-//	output.push(
-//  `<div class="question"> ${currentQuestion.question} </div>
-//  <div class="answers"> ${answers.join('')} </div>`
-//);
-//
-//quizContainer.innerHTML = output.join('');
-//
-//function showResults(){
-//
-//	//gather answer containers from our quiz*/
-//  	const answerContainers = quizContainer.querySelectorAll('.answers');
-//
-//	/*keep track of user's answers*/
-//  	let numCorrect = 0;
-//
-//	/*for each question...*/
-//  	myQuestions.forEach( (currentQuestion, questionNumber) => {
-//
-//	/*find selected answer*/
-//    const answerContainer = answerContainers[questionNumber];
-//    const selector = 'input[name=question'+questionNumber+']:checked';
-//    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-//
-//		//*if answer is correct, add to the number of correct answers
-//    	if(userAnswer===currentQuestion.correctAnswer){
-//      	numCorrect++;
-//
-//		/*color the answers Green*/
-//      	answerContainers[questionNumber].style.color = 'lightgreen';
-//    }
-//		//*if answer is wrong or blank, color the answers Red
-//    	else{answerContainers[questionNumber].style.color = 'red';
-//    }
-//  });
-//
-//	/*show number of correct answers out of total*/
-//  	resultsContainer.innerHTML = numCorrect + ' out of ' + myQuestions.length;
-//}
-//
-//	/*gather answer containers from our quiz*/
-//	const answerContainers = quizContainer.querySelectorAll('.answers');
-//
-//	/*keep track of user's answers*/
-//	let numCorrect = 0;
-//
-//	/*for each question...*/
-//	myQuestions.forEach( (currentQuestion, questionNumber) => {
-//
-//  //find selected answer
-//  const answerContainer = answerContainers[questionNumber];
-//  const selector = `input[name=question${questionNumber}]:checked`;
-//  const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-//
-//  //if answer is correct color the answers green
-//  if(userAnswer===currentQuestion.correctAnswer){
-//    // add to the number of correct answers
-//    numCorrect++;
-//	answerContainers[questionNumber].style.color = 'lightgreen';
-//  }
-//  // if answer is wrong or blank color the answers red
-//  else{
-//    answerContainers[questionNumber].style.color = 'red';
-//  }
-//});
