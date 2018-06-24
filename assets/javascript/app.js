@@ -1,5 +1,12 @@
 (function() {
-  var myQuestions = [
+  
+	var correctAnswers;
+	var incorrectAnswers;
+	var answerContainer;
+	var totalScore;
+	
+	
+	var myQuestions = [
     {
       question: "What is the best-selling Nintendo exclusive game of all time?",
       answers: {
@@ -38,7 +45,7 @@
 		question: "What is the best-selling Nintendo handheld of all time?",
       answers: {
         a: "Nintendo Game Boy",
-        b: "Nintendo Game Boy Advance",
+        b: "Nintendo Game Boy",
         c: "Nintendo DS",
         d: "Nintendo 3DS"
       },
@@ -47,50 +54,32 @@
 	  }
   ];
 
-  function buildQuiz() {
-    
-	  //store the HTML output
-    	var output = [];
+}
+ //Timer button clicked countdown
+ 
+	 $("#timerButton").click( function(){
+	   var counter = 30;
+	   setInterval(function() {
+		 counter--;
+		  if (counter >= 0) {
+			 span = document.getElementById("count");
+			 span.innerHTML = counter;
+		  }
+		  if (counter === 0) {
+			 alert('sorry, out of time');
+			 clearInterval(counter);
+		   }
+		 }, 1000);
+});
 
-    	//for each question...
-    	myQuestions.forEach((currentQuestion, questionNumber) => {
-      
-		//store the list of answer choices
-		var answers = [];
-
-      	//and for each available answer...
-      	for (letter in currentQuestion.answers) {
-        
-		// ...add an HTML radio button
-        answers.push(
-          `<label>
-           <input type="radio" name="question${questionNumber}" value="${letter}">
-           ${letter} :
-           ${currentQuestion.answers[letter]}
-           </label>`
-        );
-      }
-
-      //add question and its answers to the output
-      output.push(
-        `<div class="slide">
-           <div class="question"> ${currentQuestion.question} </div>
-           <div class="answers"> ${answers.join("")} </div>
-         </div>`
-      );
-    });
-
-    // last combine our output list into one string of HTML and put it on the page
-    quizContainer.innerHTML = output.join("");
-  }
-
-  function showResults() {
+	//Results
+  	function showResults() {
 	  
-    // gather answer containers from our quiz
+    // gather answers containers from our quiz
     var answerContainers = quizContainer.querySelectorAll(".answers");
 
     //track answers
-    let numCorrect = 0;
+    let correctAnswers = 0;
 
     // for each question...
     myQuestions.forEach((currentQuestion, questionNumber) => {
@@ -136,27 +125,14 @@
     }
   }
 
-  function showNextSlide() {
-    showSlide(currentSlide + 1);
-  }
 
-  function showPreviousSlide() {
-    showSlide(currentSlide - 1);
-  }
 
   var quizContainer = document.getElementById("quiz");
   var resultsContainer = document.getElementById("results");
   var submitButton = document.getElementById("submit");
 
-  // display quiz right away
-  buildQuiz();
+ 
 
-  var previousButton = document.getElementById("previous");
-  var nextButton = document.getElementById("next");
-  var slides = document.querySelectorAll(".slide");
-  let currentSlide = 0;
-
-  showSlide(0);
 
   // on submit, show results
   submitButton.addEventListener("click", showResults);
