@@ -1,77 +1,41 @@
 $(document).ready( function() {
 
 	
-	//button on click event that shows time and starts game when I click start game
+//button on click event that shows time and starts game when I click start game
 	------
-	//button onclick
+//button onclick
 	function clickTimerButton (){
 		$("#clickTimerButton").click(function(){
-        alert("button");
+        alert("alertButton");
 		}
 );}}
 
 	//function that starts timer when I click start game
 	function timerStart() {
 		
-		(timerStart(){
+		timerStart(){
+			//total seconds		
   			var counter = 30;
-  			setInterval(function() {
+  			//subtracts 1 second from var counter
+			setInterval(function() {
     		counter--;
-    		
-			if (counter >= 0) {
-      		span = document.getElementById("count");
-      		span.innerHTML = counter;
-    }
-    		if (counter === 0) {
-        	alert('sorry, out of time');
-        	clearInterval(counter);
+    		//shows remaining count
+				if (counter >= 0) {
+      			span = document.getElementById("count");
+      			span.innerHTML = counter;
+    }		//counter reaches 0 the alerts Sorry out of time
+    			if (counter === 0) {
+        		alert('Sorry, out of time');
+        		clearInterval(counter);
     }
   }, 1000);
-})();
+}();
 }
 	}
 
 	//function that displays question
 	function displayQuestion() {
-		
-	}
-
-	//function that displays question options 
-	function displayQuestionOptions() {
-		//code goes here to display choices
-	}
-	
-	//function that checks question answer
-	function displayQuestion() {
-
-	}
-	
-	//function that displays question answer
-	function displayQuestion() {
-
-	}
-	
-	//function that runs through questions and gives appropriate answer options
-	function displayQuestion() {
-
-		// you'll need a loop and if statements
-	}
-	
-	//function that checks win score and produces win/lose html/ reset button
-	function displayQuestion() {
-
-	}
-}
-
-(function() {
-  
-	var correctAnswers = 0;
-	var incorrectAnswers = 0;
-	var answerContainer = 0;
-	var totalScore = 0;
-	
-	
-	var myQuestions = [
+		var myQuestions = [
     {
       question: "What is the best-selling Nintendo exclusive game of all time?",
       answers: {
@@ -120,6 +84,45 @@ $(document).ready( function() {
   ];
 
 }
+		
+	}
+
+	//function that displays question options 
+	function displayQuestionOptions() {
+		//code goes here to display choices
+	}
+	
+	//function that checks question answer
+	function displayQuestion() {
+
+	}
+	
+	//function that displays question answer
+	function displayQuestion() {
+
+	}
+	
+	//function that runs through questions and gives appropriate answer options
+	function displayQuestion() {
+
+		// you'll need a loop and if statements
+	}
+	
+	//function that checks win score and produces win/lose html/ reset button
+	function displayQuestion() {
+
+	}
+}
+
+(function() {
+  
+	var correctAnswers = 0;
+	var incorrectAnswers = 0;
+	var answerContainer = 0;
+	var totalScore = 0;
+	
+	
+	
  //Timer button clicked countdown
  
 	 $("#timerButton").click( function(){
