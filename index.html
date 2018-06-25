@@ -1,199 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-	<head>
-	<meta charset="utf-8">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-			
-	<title>Nintendo Trivia Game</title>
-	
-	<!-- Bootstrap CSS -->
+    <title>Trivia Game</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	
-	<!-- Style CSS -->
-	<script src="../TriviaGame/assets/css/style.css"></script>
-	
-	<!-- MyersReset link -->
-	<style type="text/css" href="../TriviaGame/assets/reset.css"></style>
-</head>
-
-<body>
-	<header><h1>Nintendo Trivia Game</h1></header>
-	
-		<body class="text-center">
+    <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    
+    <body>
+        <header>
+            <h1>Nintendo Trivia Game</h1>
+        </header>
+        	<h2> Click Play to Play!</h2>
+			
+         <!--Start Timer Button-->
+          	<button id="startTimerButton" type="button" class="btn btn-success">Start Timer</button>
 		
-	
-	<div class="container">
-		<div class="row">
-	    	<br/>
-        	<div class="panel panel-primary">
-             	<div class="panel-headin">                  
-              		<h2> Click Play to Play!</h2>
-          				<button id="timerButton" type="button" class="btn btn-success">Start Timer</button>
-        </body>
-</div>
+    	<!--Main Container-->
+     	<div class="container game">
+        	<div class="row">
+                <div class="col-lg-6">
+                 <br/>
+        		<div class="main-panel">
+             	<div class="panel-heading">                  
+                 
+             <div id="timer-row"><h2>Time Remaining on Question:</h2> <span id="timer-number"> </span> </div>
+		
+        <!--Box holding questions-->
+             	<div id="question">
+                  	<h4>What is the best-selling Nintendo exclusive game of all time?</h4>
+                   		</div>
+		
+		<!--Box holding multiple choices options-->
+				<ul class = "multiple-choices">
+					<li class = "list-group-item">
+						<div class="checkbox">
+						<input type="checkbox" id="checkbox" />
+						<label for="checkbox">Duck Hunt
+									</label>
+								</div>
+							</li>
+					<li class = "list-group-item">
+						<div class="checkbox">
+						<input type="checkbox" id="checkbox" />
+						<label for="checkbox">Super Mario Bros
+								</label>
+							</div>
+						</li>
+					<li class = "list-group-item">
+						<div class="checkbox">
+						<input type="checkbox" id="checkbox" />
+						<label for="checkbox">Mario Kart Wii
+								</label>
+							</div>
+						</li>
+					<li class = "list-group-item">
+						<div class="checkbox">
+						<input type="checkbox" id="checkbox" />
+						<label for="checkbox">Wii Sports
+								</label>
+							</div>
+						</li>
+
+						   </ul>
+                </div>  
+            </div>
+            <div class="revealed-answer">Correct Answer is ... </div>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                  <div id="options"> </div>
+                </div>  
+            </div>
+        </div>
         
-<div class = "question-body">
-      <h4>What is the best-selling Nintendo exclusive game of all time?</h4>
-           </div>
-<ul class = "answer">
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Duck Hunt
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Super Mario Bros
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Mario Kart Wii
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Wii Sports
-            </label>
-        </div>
-    </li>
- 
-   </ul>
-           <div class = "question-body">
-      <h4>Which of the following games did Mario creator Shigeru Miyamoto NOT design?</h4>
-           </div>
-<ul class = "list-group">
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Donkey Kong
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Kid Icarus
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Excitebike
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                The Legend of Zelda
-            </label>
-        </div>
-    </li>
-   </ul>
-               <div class = "question-body">
-      <h4>What is the first game with Princess Zelda as a playable character?</h4>
-           </div>
-<ul class = "list-group">
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Zelda: Wand of Gamelon
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                The Legend of Zelda: Ocarina of Time
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Super Smash Bros. Melee
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Super Smash Bros. Brawl
-            </label>
-        </div>
-    </li>
-   </ul>
-               <div class = "question-body">
-      <h4>What is the best-selling Nintendo handheld of all time?</h4>
-           </div>
-<ul class = "list-group">
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Nintendo Game Boy
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Nintendo Game Boy
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Nintendo DS
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                Nintendo 3DS
-            </label>
-        </div>
-    </li>
-       <button id="answerCheck" type="button" class="btn btn-success">Check Your Answers</button>
-   </ul>
-                
-        </div>
-</div>
-</div>
-		<!--JQuery Link-->
-  		<script src="https://code.jquery.com/jquery-3.3.1.slim.js"
-  		integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
-  		crossorigin="anonymous"></script>
-	
-	
-		
-		</body>
-
+        <footer>
+           
+        </footer>
+        
+        <!-- App / Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="assets/javascript/app.js"></script>
+    </body>
 </html>
